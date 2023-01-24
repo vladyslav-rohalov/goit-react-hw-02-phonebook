@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import ContactForm from 'Components/ContactForm';
-import Filter from 'Components/Filter';
-import ContactList from 'Components/ContactList';
 import contactData from './Components/ContactData';
+import { ContactForm, Filter, ContactList } from './Components/index';
+import { Container, TitleH1, TitleH2 } from './Components/Phonebook.styled';
 
 class App extends Component {
   state = {
@@ -11,16 +10,16 @@ class App extends Component {
     filter: '',
   };
 
-  addNewContact = data => {
+  addNewContact = ({ name, number }) => {
     let condition = true;
     const contact = {
       id: nanoid(),
-      name: data.name,
-      number: data.number,
+      name: name,
+      number: number,
     };
 
-    this.state.contacts.filter(item => {
-      if (item.name.includes(contact.name)) {
+    this.state.contacts.filter(({ name }) => {
+      if (name.includes(contact.name)) {
         return (condition = false);
       } else {
         return true;
@@ -46,17 +45,17 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <TitleH1>Phonebook</TitleH1>
         <ContactForm onSubmit={this.addNewContact} />
-        <h2>Contacts</h2>
+        <TitleH2>Contacts</TitleH2>
         <Filter filter={this.state.filter} onFilterChange={this.changeFilter} />
         <ContactList
           contacts={this.state.contacts}
           filter={this.state.filter}
           onDeleteContact={this.deleteConatact}
         />
-      </div>
+      </Container>
     );
   }
 }

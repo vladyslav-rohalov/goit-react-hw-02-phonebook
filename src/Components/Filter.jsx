@@ -1,8 +1,10 @@
+import { Input, Label } from './Phonebook.styled';
+
 export default function Filter({ filter, onFilterChange }) {
   return (
-    <label>
+    <Label>
       Find contacts by name
-      <input value={filter} onChange={onFilterChange} type="text"></input>
-    </label>
+      <Input value={filter} onChange={onFilterChange} type="text"></Input>
+    </Label>
   );
 }
