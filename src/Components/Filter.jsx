@@ -1,4 +1,5 @@
 import { Input, Label } from './Phonebook.styled';
+import PropTypes from 'prop-types';
 
 export default function Filter({ filter, onFilterChange }) {
   return (
@@ -8,3 +9,8 @@ export default function Filter({ filter, onFilterChange }) {
     </Label>
   );
 }
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  onFilterChange: PropTypes.func,
+};

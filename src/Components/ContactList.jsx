@@ -1,4 +1,5 @@
 import { List, ListItem, ListBtn, Svg } from './Phonebook.styled';
+import PropTypes from 'prop-types';
 
 export default function ContactList({ contacts, filter, onDeleteContact }) {
   const normalizedFilter = filter.toLowerCase();
@@ -38,3 +39,9 @@ export default function ContactList({ contacts, filter, onDeleteContact }) {
     )
   );
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+  filter: PropTypes.string,
+  onDeleteContact: PropTypes.func,
+};
